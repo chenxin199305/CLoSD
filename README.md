@@ -1,9 +1,10 @@
 # CLoSD: Closing the Loop between Simulation and Diffusion for multi-task character control
+
 ### ICLR 2025 Spotlight
+
 [Project Page](https://guytevet.github.io/CLoSD-page/) | [Arxiv](https://arxiv.org/abs/2410.03441) | [Video](https://www.youtube.com/watch?feature=shared&v=O1tzbiDMW8U)
 
 ![teaser](https://github.com/GuyTevet/CLoSD-page/blob/main/static/figures/demo1.gif?raw=true)
-
 
 ## Bibtex
 
@@ -20,9 +21,7 @@ If you find this code useful in your research, please cite:
 }
 ```
 
-
 ## Getting Started
-
 
 - The code was tested on `Ubuntu 20.04.5` with `Python 3.8.19`.
 - Running CLoSD requires a single GPU with `~4GB RAM` and a monitor.
@@ -32,7 +31,7 @@ If you find this code useful in your research, please cite:
 <details>
   <summary><b>Setup env</b></summary>
 
-  - Create a Conda env and setup the requirements:
+- Create a Conda env and setup the requirements:
 
 ```
 conda create -n closd python=3.8
@@ -41,7 +40,7 @@ pip install -r requirement.txt
 python -m spacy download en_core_web_sm
 ```
 
-  - Download [Isaac GYM](https://developer.nvidia.com/isaac-gym), and install it to your env:
+- Download [Isaac GYM](https://developer.nvidia.com/isaac-gym), and install it to your env:
 
 ```
 conda activate closd
@@ -53,7 +52,7 @@ pip install -e .
 
 <details>
   <summary><b>Copyright notes</b></summary>
-  
+
 The code will automatically download cached versions of the following datasets and models. You must adhere to their terms of use!
 
 - SMPL license is according to https://smpl-x.is.tue.mpg.de/
@@ -106,7 +105,6 @@ python closd/run.py\
 - To run the model without fine-tuning, use `exp_name=CLoSD_no_finetune`
 - To run without a monitor, use `headless=True`
 
-
 ## Evaluate
 
 <details>
@@ -136,6 +134,7 @@ python closd/run.py\
 ```
 python -m closd.diffusion_planner.eval.eval_humanml --external_results_file closd/diffusion_planner/saved_motions/closd/CloSD.pkl --do_unique
 ```
+
 - To log resutls in WandB, add:
   ```
   --train_platform_type WandBPlatform --eval_name <wandb_exp_name>
@@ -161,13 +160,11 @@ python -m closd.diffusion_planner.eval.eval_humanml --external_results_file clos
 - To record motions with IsaacGym, while simulation is running (on IsaacGym GUI), press `L` to start/stop recording.
 - The recorded file will be saved to `output/states/`
 
-
 <details>
   <summary><b>Blender vizualization</b></summary>
 
 - This script runs with Blender interpreter and visualizes IsaacGym recordings.
 - The code is based on https://github.com/xizaoqu/blender_for_UniHSI and was tested on Blender 4.2
-
 
 First, setup the Blender interpreter with:
 
@@ -198,7 +195,6 @@ The script will save the SMPL parameters that can be visualize with standard SMP
 
 </details>
 
-
 ## Train your own CLoSD
 
 <details>
@@ -212,7 +208,6 @@ python closd/run.py\
 ```
 
 - Train for 62K epochs
-
 
 </details>
 
@@ -259,7 +254,7 @@ python closd/run.py\
 - Instead of running it as part of CLoSD, you can also run DiP in a stand-alone mode, fed by its own generated motions.
 - The following details how to sample/evaluate/train DiP in the **stand-alone** mode.
 
-### 
+###    
 
 <details>
   <summary><b>Generate Motion with the Stand-alone DiP</b></summary>
@@ -334,7 +329,14 @@ To train DiP without target conditioning, add `--lambda_target_loc 0`
 This code is standing on the shoulders of giants. We want to thank the following contributors
 that our code is based on:
 
-[MDM](https://github.com/GuyTevet/motion-diffusion-model), [PHC](https://github.com/ZhengyiLuo/PHC), [MotionCLIP](https://github.com/GuyTevet/MotionCLIP), [text-to-motion](https://github.com/EricGuo5513/text-to-motion), [actor](https://github.com/Mathux/ACTOR), [joints2smpl](https://github.com/wangsen1312/joints2smpl), [MoDi](https://github.com/sigal-raab/MoDi).
+[MDM](https://github.com/GuyTevet/motion-diffusion-model), 
+[PHC](https://github.com/ZhengyiLuo/PHC), 
+[MotionCLIP](https://github.com/GuyTevet/MotionCLIP), 
+[text-to-motion](https://github.com/EricGuo5513/text-to-motion), 
+[actor](https://github.com/Mathux/ACTOR), 
+[joints2smpl](https://github.com/wangsen1312/joints2smpl), 
+[MoDi](https://github.com/sigal-raab/MoDi).
 
 ## License
+
 This code is distributed under an [MIT LICENSE](LICENSE).
